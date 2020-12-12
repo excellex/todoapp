@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import AddForm from "./components/AddForm/AddForm";
+import AddButton from "./components/AddButton/AddButton";
+import { Fab, TextField, Switch, FormControlLabel } from '@material-ui/core'
+import AddIcon from '@material-ui/icons/Add';
+import TodoList from "./components/TodoList/TodoList";
+import Switches from "./components/Switches";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+
+      {/* <AddForm /> */}
+      <TodoList />
+      <AddButton />
     </div>
   );
 }
