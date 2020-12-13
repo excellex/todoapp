@@ -2,14 +2,18 @@ import React from 'react';
 import { Fab, Switch, FormControlLabel, FormGroup } from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add';
 import { bottom, buttons } from './addbutton.module.css';
-import SimpleDialogDemo from '../SimpleDialogDemo';
+import { todoContext } from '../../contexts/todoContext';
+import AddModal from '../AddModal/AddModal';
 
 function AddButton() {
-  const [checked, setChecked] = React.useState(false);
   const [open, setOpen] = React.useState(false);
+  const { swithched, setswithched, todoList, filterList, setFilterList } = React.useContext(todoContext);
 
   const toggleChecked = () => {
-    setChecked((prev) => !prev);
+    const filtered = todoList.filter(item => !item.checked || swithched)
+    setFilterList(filtered)
+    setswithched((prev) => !prev);
+
   };
 
   const handleClickOpen = () => {
@@ -26,7 +30,7 @@ function AddButton() {
                 value="bottom"
                 control={
                   <Switch
-                    checked={checked}
+                    checked={swithched}
                     onChange={toggleChecked}
                     name="checked"
                     color="primary"
@@ -39,7 +43,7 @@ function AddButton() {
             </FormGroup>
           </div>
           <div>
-            <SimpleDialogDemo />
+            <AddModal />
             {/* <Fab color="primary" aria-label="add" onClick={handleClickOpen}>
               <AddIcon />
             </Fab> */}
