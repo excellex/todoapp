@@ -12,22 +12,21 @@ const useStyles = makeStyles({
 });
 
 function AddForm(props) {
-  const classes = useStyles();
-  const { open, setOpen, todoList, setTodoList} = React.useContext(todoContext);
+  const { classes, open, setOpen, todoList, setTodoList } = React.useContext(todoContext);
   const [text, setText] = React.useState('')
   const inputHandler = (e) => {
     setText(e.target.value);
   }
   const addTodo = () => {
     const list = todoList.slice()
-    list.push({todo: text, index: todoList.length, checked: false, moreinfo: ''})
-    setTodoList(list )
+    list.push({ todo: text, id: todoList.length + text, checked: false, moreinfo: '' })
+    setTodoList(list)
     setOpen(false)
   }
   return (
     <div className={classes.inputform}>
       <FormControl >
-        <TextField autoFocus id="standard-basic" label="Add task to do..." onChange={inputHandler}  />
+        <TextField autoFocus id="standard-basic" label="Add task to do..." onChange={inputHandler} />
         <Button onClick={addTodo} type="button" variant="outlined">add</Button>
       </FormControl>
     </div>

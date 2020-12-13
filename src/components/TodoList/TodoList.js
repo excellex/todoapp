@@ -1,18 +1,19 @@
 import React from 'react';
 import { List, ListItem, ListItemText } from '@material-ui/core'
-import TodoItem from '../TodoItem/TodoItem';
 import { todoContext } from '../../contexts/todoContext';
+import TodoItem from '../TodoItem/TodoItem';
 
-function TodoList(props) {
-  const { filterList, setFilterList } = React.useContext(todoContext);
+function TodoList() {
+  const { filterList } = React.useContext(todoContext);
 
   return (
     <div className='container'>
-
       <List >
-        {filterList && filterList.length ? <></> : <center> <ListItem ><ListItemText primary={'no todos...'} /></ListItem></center>}
+        {filterList && filterList.length
+          ? <></>
+          : <center> <ListItem ><ListItemText primary={'no todos...'} /></ListItem></center>}
         {filterList && filterList.map((item, key) => (
-          <TodoItem key={key} item={item} index={item.index} />
+          <TodoItem key={item.id} item={item} id={item.id} />
         ))}
       </List>
     </div>

@@ -5,8 +5,6 @@ import AddIcon from '@material-ui/icons/Add';
 import { todoContext } from '../../contexts/todoContext';
 import AddForm from '../AddForm/AddForm';
 
-// const emails = ['username@gmail.com', 'user02@gmail.com'];
-
 function ModalForm(props) {
   const { onClose, selectedValue, open } = props;
 
@@ -26,9 +24,7 @@ function ModalForm(props) {
 }
 
 export default function AddModal() {
-  // const [open, setOpen] = React.useState(false);
   const { open, setOpen} = React.useContext(todoContext);
-  // const [selectedValue, setSelectedValue] = React.useState(emails[1]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -36,7 +32,6 @@ export default function AddModal() {
 
   const handleClose = (value) => {
     setOpen(false);
-    // setSelectedValue(value);
   };
 
   return (
